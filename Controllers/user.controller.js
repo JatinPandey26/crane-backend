@@ -26,8 +26,10 @@ export const RegisterController = async (req, res, next) => {
         if (err) return res.status(500).send("something went wrong");
         res
           .cookie("access_token", payload, {
-            httpOnly: true,
             sameSite: "none",
+            secure: true,
+            domain: "crane-frontend.vercel.app",
+            httpOnly: true,
           })
           .status(201)
           .send(newUser);
@@ -58,8 +60,10 @@ export const LoginController = async (req, res, next) => {
         if (err) return res.status(500).send("something went wrong");
         res
           .cookie("access_token", payload, {
-            httpOnly: true,
             sameSite: "none",
+            secure: true,
+            domain: "crane-frontend.vercel.app",
+            httpOnly: true,
           })
           .status(201)
           .send(user);
