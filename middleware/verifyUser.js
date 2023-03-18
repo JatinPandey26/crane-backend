@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
 import { User } from "../Models/user.model.js";
 export const verifyToken = async (req, res, next) => {
-  try {
+  try { 
     const token = req.cookies.access_token;
     if (!token) return res.status(401).send("Not authorized1");
     const { id } = await jwt.verify(token, process.env.JWT_SECRET);
