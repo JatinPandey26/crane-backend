@@ -24,7 +24,13 @@ export const RegisterController = async (req, res, next) => {
       process.env.JWT_SECRET,
       (err, payload) => {
         if (err) return res.status(500).send("something went wrong");
-        res.cookie("access_token", payload).status(201).send(newUser);
+        res
+          .cookie("access_token", payload, {
+            httpOnly: true,
+            sameSite: "none",
+          })
+          .status(201)
+          .send(newUser);
       }
     );
   } catch (error) {
@@ -50,7 +56,13 @@ export const LoginController = async (req, res, next) => {
       process.env.JWT_SECRET,
       (err, payload) => {
         if (err) return res.status(500).send("something went wrong");
-        res.cookie("access_token", payload).status(201).send(user);
+        res
+          .cookie("access_token", payload, {
+            httpOnly: true,
+            sameSite: "none",
+          })
+          .status(201)
+          .send(user);
       }
     );
   } catch (error) {
