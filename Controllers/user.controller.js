@@ -28,7 +28,6 @@ export const RegisterController = async (req, res, next) => {
           .cookie("access_token", payload, {
             sameSite: "none",
             secure: true,
-            domain: "crane-frontend.vercel.app",
             httpOnly: true, 
           })
           .status(201)
@@ -62,7 +61,6 @@ export const LoginController = async (req, res, next) => {
           .cookie("access_token", payload, {
             sameSite: "none",
             secure: true,
-            domain: "crane-frontend.vercel.app",
             httpOnly: true,
           })
           .status(201)
